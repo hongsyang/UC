@@ -1,31 +1,15 @@
 package com.xzt.uc;
 
 
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageButton;
 import android.view.View.OnClickListener;
-import android.util.Log;
-
 import static com.xzt.uc.SearchActivity.webView;
-import static com.xzt.uc.UCActivity.ucActivity;
-import static com.xzt.uc.AdvanceSetActivity.advanceSetActivity;
-import static com.xzt.uc.DownloadSetActivity.downloadSetActivity;
-import static com.xzt.uc.FavoriteAndHistoryActivity.favoriteAndHistoryActivity;
-import static com.xzt.uc.SearchActivity.searchActivity;
-import static com.xzt.uc.SettingsActivity.settingsActivity;
-import static com.xzt.uc.UCFrontpageSetActivity.ucFrontpageSetActivity;
-import static com.xzt.uc.WebpageScanSetActivity.webpageScanSetActivity;
-import static com.xzt.uc.WebsiteNavigationActivity.websitenavigationActivity;
-import static com.xzt.uc.SkinActivity.skinActivity;
-
 
 
 public class MenuActivity extends Activity {
@@ -54,7 +38,7 @@ public class MenuActivity extends Activity {
 
         btn_login_in = (ImageButton) this.findViewById(R.id.btn_login_in);
         btn_favourites_history = (ImageButton) this.findViewById(R.id.btn_favourites_history);
-        btn_my_video = (ImageButton) this.findViewById(R.id.btn_full_screen);
+        btn_my_video = (ImageButton) this.findViewById(R.id.btn_my_video);
         btn_my_novel = (ImageButton) this.findViewById(R.id.btn_my_novel);
         btn_my_comics = (ImageButton) this.findViewById(R.id.btn_my_comics);
         btn_download_management = (ImageButton) this.findViewById(R.id.btn_download_management);
@@ -103,69 +87,7 @@ public class MenuActivity extends Activity {
                     Intent intent=new Intent(MenuActivity.this,FavoriteAndHistoryActivity.class);
                     startActivity(intent);
                     break;
-                case R.id.btn_full_screen:
-                    intent = getIntent();
-                    String data = intent.getStringExtra("package_name");
-                    Log.d("this", "data");
-                    if(data == "SearchActivity")
-                    {
-                        //取消电池栏
-                        searchActivity.requestWindowFeature(Window.FEATURE_NO_TITLE);
-                        searchActivity.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-                    }
-                    else if(data == "UCActivity")
-                    {
-                        ucActivity.requestWindowFeature(Window.FEATURE_NO_TITLE);
-                        ucActivity.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-                    }
-                    else if(data == "AdvanceSetActivity")
-                    {
-                        advanceSetActivity.requestWindowFeature(Window.FEATURE_NO_TITLE);
-                        advanceSetActivity.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
-                    }
-                    else if(data == "DownloadSetActivity")
-                    {
-                        downloadSetActivity.requestWindowFeature(Window.FEATURE_NO_TITLE);
-                        downloadSetActivity.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-                    }
-                    else if(data == "FavoriteAndHistoryActivity")
-                    {
-                        favoriteAndHistoryActivity.requestWindowFeature(Window.FEATURE_NO_TITLE);
-                        favoriteAndHistoryActivity.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
-                    }
-                    else if(data == "SettingsActivity")
-                    {
-                        settingsActivity.requestWindowFeature(Window.FEATURE_NO_TITLE);
-                        settingsActivity.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
-                    }
-                    else if(data == "UCFrontpageSetActivity")
-                    {
-                        ucFrontpageSetActivity.requestWindowFeature(Window.FEATURE_NO_TITLE);
-                        ucFrontpageSetActivity.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
-                    }
-                    else if(data == "WebpageScanSetActivity")
-                    {
-                        webpageScanSetActivity.requestWindowFeature(Window.FEATURE_NO_TITLE);
-                        webpageScanSetActivity.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
-                    }
-                    else if(data == "WebsiteNavigationActivity")
-                    {
-                        websitenavigationActivity.requestWindowFeature(Window.FEATURE_NO_TITLE);
-                        websitenavigationActivity.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
-                    }
-                    else if(data == "SkinActivity")
-                    {
-                        skinActivity.requestWindowFeature(Window.FEATURE_NO_TITLE);
-                        skinActivity.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-                    }
-
-
+                case R.id.btn_my_video:
                     break;
                 case R.id.btn_my_novel:
                     break;

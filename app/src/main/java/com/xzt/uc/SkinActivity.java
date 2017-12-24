@@ -15,8 +15,6 @@ import java.util.List;
 
 
 public class SkinActivity extends FragmentActivity implements View.OnClickListener {
-
-    public static SkinActivity skinActivity = null;
     private TextView textWallPaper;
     private TextView textWebPage;
     private TextView textFont;
@@ -37,7 +35,6 @@ public class SkinActivity extends FragmentActivity implements View.OnClickListen
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.skin_layout);
-        skinActivity = this;
 
         mViewPager= (ViewPager) findViewById(R.id.id_view_pager);
         textWallPaper=(TextView) findViewById(R.id.text_wallpaper);

@@ -51,7 +51,7 @@
                     style="?android:attr/buttonBarButtonStyle"/>
                 <!--我的视频按钮-->
                 <ImageButton
-                    android:id="@+id/btn_full_screen"
+                    android:id="@+id/btn_my_video"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:scaleType="center"
@@ -60,7 +60,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
                     android:layout_weight="1"
-                    android:background="@drawable/btn_full_screen"
+                    android:background="@drawable/btn_my_video"
                     style="?android:attr/buttonBarButtonStyle"/>
                 <!--我的小说按钮-->
                 <ImageButton

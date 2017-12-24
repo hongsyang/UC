@@ -14,8 +14,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FavoriteAndHistoryActivity extends AppCompatActivity {
-
-    public static FavoriteAndHistoryActivity favoriteAndHistoryActivity = null;
     private TabLayout tab_title;
     private ViewPager vp_pager;
     private FragmentPagerAdapter fAdapter;
@@ -27,8 +25,6 @@ public class FavoriteAndHistoryActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.favorite_and_history_layout);
-        favoriteAndHistoryActivity = this;
-
         ActionBar actionBar=getSupportActionBar();
         if(actionBar!=null)
             actionBar.hide();
