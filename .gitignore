@@ -53,3 +53,13 @@ google-services.json
 freeline.py
 freeline/
 freeline_project_description.json
+*.xml
+app/src/main/AndroidManifest.xml
+app/src/androidTest/java/com/xzt/uc/ExampleInstrumentedTest.java
+app/proguard-rules.pro
+app/proguard-rules.pro
+*.pro
+*.gradle
+*.xml
+*.xml
+*.xml

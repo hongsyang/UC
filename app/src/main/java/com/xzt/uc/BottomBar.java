@@ -35,7 +35,11 @@ public class BottomBar extends LinearLayout
         btn_slide_bottom_in_out.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                context.startActivity(new Intent(context,MenuActivity.class));
+                String data = context.getClass().getSimpleName();
+                Intent intent = new Intent(context,MenuActivity.class);
+                intent.putExtra("package_name", data);
+                context.startActivity(intent);
+
             }
         });
 

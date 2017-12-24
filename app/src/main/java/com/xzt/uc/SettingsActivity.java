@@ -14,6 +14,8 @@ import android.widget.TextView;
 
 
 public class SettingsActivity extends AppCompatActivity {
+
+    public static SettingsActivity settingsActivity = null;
     private TitleLayout titleLayoutMain;
     private RelativeLayout rotateScreen;
     private String[] rotateScreenList=new String[]{"跟随系统","锁定横屏","锁定竖屏"};
@@ -22,6 +24,8 @@ public class SettingsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.settings_layout);
+        settingsActivity = this;
+
         ActionBar actionBar=getSupportActionBar();
         if(actionBar!=null){
             actionBar.hide();
