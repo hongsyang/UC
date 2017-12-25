@@ -4,12 +4,31 @@ package com.xzt.uc;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageButton;
 import android.view.View.OnClickListener;
 import static com.xzt.uc.SearchActivity.webView;
+import static com.xzt.uc.SearchActivity.searchActivity;
+import static com.xzt.uc.UCActivity.ucActivity;
+import static com.xzt.uc.AdvanceSetActivity.advanceSetActivity;
+import static com.xzt.uc.DownloadSetActivity.downloadSetActivity;
+import static com.xzt.uc.FavoriteAndHistoryActivity.favoriteAndHistoryActivity;
+import static com.xzt.uc.SettingsActivity.settingsActivity;
+import static com.xzt.uc.UCFrontpageSetActivity.ucFrontpageSetActivity;
+import static com.xzt.uc.WebpageScanSetActivity.webpageScanSetActivity;
+import static com.xzt.uc.WebsiteNavigationActivity.websitenavigationActivity;
+import static com.xzt.uc.SkinActivity.skinActivity;
+
+
+
+
+
+
 
 
 public class MenuActivity extends Activity {
@@ -28,7 +47,7 @@ public class MenuActivity extends Activity {
     // 3.public PopupWindow(View contentView, int width, int height)
     // 4.public PopupWindow(View contentView, int width, int height, boolean focusable)
     public static MenuActivity menuActivity = null;
-
+    public static int count = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,6 +107,40 @@ public class MenuActivity extends Activity {
                     startActivity(intent);
                     break;
                 case R.id.btn_full_screen:
+                    count++;
+                    if(count%2 == 1)
+                        ucActivity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+                    else
+                        ucActivity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+                    /*if(count%2 == 1)
+                    {
+                        //取消电池栏
+                        searchActivity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+                        advanceSetActivity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+                        downloadSetActivity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+                        favoriteAndHistoryActivity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+                        settingsActivity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+                        ucFrontpageSetActivity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+                        webpageScanSetActivity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+                        websitenavigationActivity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+                        skinActivity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+                    }
+                    else
+                    {
+                        searchActivity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+                        ucActivity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+                        advanceSetActivity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+                        downloadSetActivity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+                        favoriteAndHistoryActivity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+                        settingsActivity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+                        ucFrontpageSetActivity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+                        webpageScanSetActivity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+                        websitenavigationActivity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+                        skinActivity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+                    }*/
+
+
                     break;
                 case R.id.btn_my_novel:
                     break;

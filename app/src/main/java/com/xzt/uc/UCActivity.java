@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ImageButton;
 import android.support.v7.widget.RecyclerView;
 import java.util.ArrayList;
@@ -189,4 +190,6 @@ public class UCActivity extends AppCompatActivity {
         News news10 = new News("news10", R.drawable.news10_pic);
         newsList.add(news10);
     }
+
+
 }

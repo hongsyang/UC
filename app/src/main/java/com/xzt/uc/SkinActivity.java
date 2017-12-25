@@ -15,6 +15,9 @@ import java.util.List;
 
 
 public class SkinActivity extends FragmentActivity implements View.OnClickListener {
+
+    public static SkinActivity skinActivity = null;
+
     private TextView textWallPaper;
     private TextView textWebPage;
     private TextView textFont;
