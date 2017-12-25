@@ -38,7 +38,7 @@ public class MenuActivity extends Activity {
 
         btn_login_in = (ImageButton) this.findViewById(R.id.btn_login_in);
         btn_favourites_history = (ImageButton) this.findViewById(R.id.btn_favourites_history);
-        btn_my_video = (ImageButton) this.findViewById(R.id.btn_my_video);
+        btn_my_video = (ImageButton) this.findViewById(R.id.btn_full_screen);
         btn_my_novel = (ImageButton) this.findViewById(R.id.btn_my_novel);
         btn_my_comics = (ImageButton) this.findViewById(R.id.btn_my_comics);
         btn_download_management = (ImageButton) this.findViewById(R.id.btn_download_management);
@@ -87,7 +87,7 @@ public class MenuActivity extends Activity {
                     Intent intent=new Intent(MenuActivity.this,FavoriteAndHistoryActivity.class);
                     startActivity(intent);
                     break;
-                case R.id.btn_my_video:
+                case R.id.btn_full_screen:
                     break;
                 case R.id.btn_my_novel:
                     break;
