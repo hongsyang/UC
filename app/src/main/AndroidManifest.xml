@@ -17,7 +17,7 @@
 
         <!-- android:theme="@style/AppTheme"改为android:theme="@style/Theme.AppCompat.NoActionBar" -->
         <!-- 使顶部标题栏不可见 -->
-        <activity android:name=".UCActivity">
+        <activity android:name=".BFHActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -36,7 +36,7 @@
         <activity android:name=".UCFrontpageSetActivity" />
         <activity android:name=".WebpageScanSetActivity" />
         <activity android:name=".SkinActivity" />
-        <activity android:name=".BFHActivity"></activity>
+        <activity android:name=".UCActivity"></activity>
     </application>
 
 </manifest>
