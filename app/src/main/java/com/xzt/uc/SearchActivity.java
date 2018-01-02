@@ -3,6 +3,7 @@ package com.xzt.uc;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +11,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
@@ -27,6 +30,7 @@ import java.util.regex.Pattern;
 
 import static com.xzt.uc.BottomBar.btn_backward;
 import static com.xzt.uc.BottomBar.btn_forward;
+import static com.xzt.uc.MenuActivity.is_full_screen;
 
 
 public class SearchActivity extends AppCompatActivity {
@@ -51,6 +55,17 @@ public class SearchActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        SharedPreferences full_screen_get = getSharedPreferences("full_screen", MODE_PRIVATE);
+        is_full_screen = full_screen_get.getBoolean("full_screen", false);
+        if(is_full_screen)
+        {
+            //取消标题
+            requestWindowFeature(Window.FEATURE_NO_TITLE);
+            //取消状态栏
+            getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        }
+
         setContentView(R.layout.search_layout);
         searchActivity = this;
         count=0;

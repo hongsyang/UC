@@ -44,13 +44,11 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder>
     {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.news_item, parent, false);
         final ViewHolder holder = new ViewHolder(view);
-        Log.d(TAG, "123");
         holder.newsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 int positon = holder.getAdapterPosition();
                 News news = mNewsList.get(positon);
-                Log.d(TAG, news.getName());
                 switch(news.getName())
                 {
                     case "news1":
@@ -58,7 +56,6 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder>
                         Intent intent=new Intent(ucActivity, SearchActivity.class);
                         intent.putExtra("news1",news1);
                         ucActivity.startActivity(intent);
-                        Log.d(TAG, "innerNews1");
                         break;
                     case "news2":
                         String news2 = new String("http://m2.people.cn/r/MV8wXzEwMjgyMTM3XzIyXzE1MTM3MTg4NTE=?__from=uc_zaozhidao&zzd_from=uc-iflow&sm_article_id=1473845360083326181&dl_type=3&uc_biz_str=S%3Acustom%7CC%3Aiflow_site&rd_type=reco&recoid=6434255944767358506&sp_gz=4&cid=51830095&app=uc-iflow");

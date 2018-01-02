@@ -3,17 +3,23 @@ package com.xzt.uc;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageButton;
 import android.support.v7.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.xzt.uc.MenuActivity.is_full_screen;
+import static com.xzt.uc.SettingsActivity.start;
 
 
 public class UCActivity extends AppCompatActivity {
@@ -25,6 +31,17 @@ public class UCActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        SharedPreferences full_screen_get = getSharedPreferences("full_screen", MODE_PRIVATE);
+        is_full_screen = full_screen_get.getBoolean("full_screen", false);
+        if(is_full_screen)
+        {
+            //取消标题
+            requestWindowFeature(Window.FEATURE_NO_TITLE);
+            //取消状态栏
+            getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        }
+
         setContentView(R.layout.uc_layout);
         ucActivity = this;
         //将其赋值为当前的活动
@@ -164,6 +181,22 @@ public class UCActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
         NewsAdapter adapter = new NewsAdapter(newsList);
         recyclerView.setAdapter(adapter);
+
+
+        //启动上次未关闭的网页
+        SharedPreferences start_get = getSharedPreferences("start", MODE_PRIVATE);
+        start = start_get.getBoolean("start", false);
+        Log.d("UCActivity", "start4=" + start);
+        if(start)
+        {
+            if ((getIntent().getFlags() & Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT) != 0)
+            {
+                //结束你的activity
+                finish();
+                return;
+            }
+        }
+
     }
 
 

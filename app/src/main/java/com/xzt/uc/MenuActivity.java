@@ -3,6 +3,7 @@ package com.xzt.uc;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Window;
@@ -38,7 +39,7 @@ public class MenuActivity extends Activity {
     //它们的不同点在于：
     //    1.AlertDialog不能指定显示位置，只能默认显示在屏幕最中间（当然也可以通过设置WindowManager参数来改变位置）。
     //    2.而PopupWindow是可以指定显示位置的，随便哪个位置都可以，更加灵活
-    private ImageButton btn_login_in, btn_favourites_history, btn_my_video, btn_my_novel, btn_my_comics, btn_download_management, btn_add_to_favorites, btn_refresh, btn_night_mode, btn_toolbox, btn_settings, btn_slide_downward, btn_share;
+    private ImageButton btn_login_in, btn_favourites_history, btn_full_screen, btn_my_novel, btn_my_comics, btn_download_management, btn_add_to_favorites, btn_refresh, btn_night_mode, btn_toolbox, btn_settings, btn_slide_downward, btn_share;
     //               立即登陆，        收藏/历史，         我的视频，    我的小说，    我的漫画，          下载管理，              添加网页，          刷新，      夜间模式，      工具箱，      设置，           下滑，          分享；
     private LinearLayout pop_layout;
     //PopupWindow的构造方法：
@@ -47,7 +48,7 @@ public class MenuActivity extends Activity {
     // 3.public PopupWindow(View contentView, int width, int height)
     // 4.public PopupWindow(View contentView, int width, int height, boolean focusable)
     public static MenuActivity menuActivity = null;
-    public static int count = 0;
+    public static boolean is_full_screen;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +58,7 @@ public class MenuActivity extends Activity {
 
         btn_login_in = (ImageButton) this.findViewById(R.id.btn_login_in);
         btn_favourites_history = (ImageButton) this.findViewById(R.id.btn_favourites_history);
-        btn_my_video = (ImageButton) this.findViewById(R.id.btn_full_screen);
+        btn_full_screen = (ImageButton) this.findViewById(R.id.btn_full_screen);
         btn_my_novel = (ImageButton) this.findViewById(R.id.btn_my_novel);
         btn_my_comics = (ImageButton) this.findViewById(R.id.btn_my_comics);
         btn_download_management = (ImageButton) this.findViewById(R.id.btn_download_management);
@@ -81,7 +82,7 @@ public class MenuActivity extends Activity {
 
         btn_login_in.setOnClickListener(itemsOnClick);
         btn_favourites_history.setOnClickListener(itemsOnClick);
-        btn_my_video.setOnClickListener(itemsOnClick);
+        btn_full_screen.setOnClickListener(itemsOnClick);
         btn_my_novel.setOnClickListener(itemsOnClick);
         btn_my_comics.setOnClickListener(itemsOnClick);
         btn_download_management.setOnClickListener(itemsOnClick);
@@ -107,16 +108,30 @@ public class MenuActivity extends Activity {
                     startActivity(intent);
                     break;
                 case R.id.btn_full_screen:
-                    count++;
-                    if(count%2 == 1)
+
+                    SharedPreferences full_screen_get = getSharedPreferences("full_screen", MODE_PRIVATE);
+                    is_full_screen = full_screen_get.getBoolean("full_screen", false);
+                    if(!is_full_screen)
+                    {
+                        is_full_screen = true;
                         ucActivity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+                    }
                     else
+                    {
+                        is_full_screen = false;
                         ucActivity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+                    }
+
+                    SharedPreferences.Editor full_screen_save = getSharedPreferences("full_screen", MODE_PRIVATE).edit();
+                    full_screen_save.putBoolean("full_screen", is_full_screen);
+                    full_screen_save.apply();
+
+
                     /*if(count%2 == 1)
                     {
                         //取消电池栏
                         searchActivity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
+                        ucActivity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
                         advanceSetActivity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
                         downloadSetActivity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
                         favoriteAndHistoryActivity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
