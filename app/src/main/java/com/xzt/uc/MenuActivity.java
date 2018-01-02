@@ -90,9 +90,11 @@ public class MenuActivity extends Activity {
             switch (v.getId())
             {
                 case R.id.btn_login_in:
+                    Intent intent=new Intent(MenuActivity.this,LoginActivity.class);
+                    startActivity(intent);
                     break;
                 case R.id.btn_favourites_history:  //收藏/历史按钮
-                    Intent intent=new Intent(MenuActivity.this,FavoriteAndHistoryActivity.class);
+                    intent=new Intent(MenuActivity.this,FavoriteAndHistoryActivity.class);
                     startActivity(intent);
                     break;
                 case R.id.btn_full_screen:
