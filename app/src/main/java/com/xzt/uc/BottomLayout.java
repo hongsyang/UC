@@ -5,6 +5,8 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.LinearLayout;
 
+import com.xzt.uc.R;
+
 /**
  * Created by T on 2017/12/17.
  */

@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -20,17 +21,20 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
-import android.widget.ImageButton;
+import android.widget.EditText;
 import android.widget.Toast;
-
-import org.litepal.LitePal;
-import org.litepal.crud.DataSupport;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import static com.xzt.uc.BottomBar.btn_backward;
+import android.os.Handler;
+import android.os.Message;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.view.LayoutInflater;
 import static com.xzt.uc.BottomBar.btn_forward;
 import static com.xzt.uc.MenuActivity.is_full_screen;
+import static com.xzt.uc.SettingsActivity.start;
 
 
 public class SearchActivity extends AppCompatActivity {
@@ -42,6 +46,9 @@ public class SearchActivity extends AppCompatActivity {
     public int i=0;
     public static int count;
     public String string="null";
+    public boolean isloadimg;
+    public int time_count;
+    public FloatingActionButton fla_btn;
 
     String[] booksArray = new String[]
             {
@@ -69,6 +76,8 @@ public class SearchActivity extends AppCompatActivity {
         setContentView(R.layout.search_layout);
         searchActivity = this;
         count=0;
+        isloadimg=true;
+        fla_btn=(FloatingActionButton) findViewById(R.id.fab_Button);
         Intent intent=getIntent();
         String str=intent.getStringExtra("str");
         final Activity activity = this;
@@ -177,6 +186,15 @@ public class SearchActivity extends AppCompatActivity {
 
         String news10=intent.getStringExtra("news10");
         webView.loadUrl(news10);
+
+
+
+
+        //启动上次未关闭的网页
+
+
+
+
 
 
 
@@ -298,4 +316,66 @@ public class SearchActivity extends AppCompatActivity {
         // system behavior (probably exit the activity)
         return super.onKeyDown(keyCode, event);
     }
+
+
+    final Handler handler=new Handler(){
+        public void handleMessage(Message msg){
+            switch (msg.what){
+                case 1:
+                    webView.reload();
+                    count-=1;
+                    Log.d("handle","1");
+                    break;
+                default:
+                    break;
+            }
+        }
+    };
+
+
+    public void timerRefresh(){
+        final AlertDialog.Builder dialog=new AlertDialog.Builder(SearchActivity.this);
+        final View dialogView= LayoutInflater.from(SearchActivity.this).inflate(R.layout.dialog1,null);
+        dialog.setTitle("定时刷新装置");
+        dialog.setView(dialogView);
+        dialog.setPositiveButton("开始刷新", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                EditText editText=(EditText)dialogView.findViewById(R.id.edit_text);
+                time_count=Integer.parseInt(editText.getText().toString());
+                Log.d("test.time",""+time_count);
+                if(time_count<5||time_count>999){
+                    Toast.makeText(SearchActivity.this,"输入的时间不合法请重新设置",Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    fla_btn.setEnabled(true);
+                    Toast.makeText(SearchActivity.this,"点击时钟按钮可取消定时刷新",Toast.LENGTH_SHORT).show();
+                    final Timer timer=new Timer();
+                    TimerTask task=new TimerTask() {
+                        @Override
+                        public void run() {
+                            Message message=new Message();
+                            message.what=1;
+                            handler.sendMessage(message);
+                        }
+                    };
+                    timer.schedule(task,1000,time_count*1000);
+                    fla_btn.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            timer.cancel();
+                            fla_btn.setEnabled(false);
+                        }
+                    });
+                }
+            }
+        });
+        dialog.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+            }
+        });
+        dialog.show();
+    }
+
 }

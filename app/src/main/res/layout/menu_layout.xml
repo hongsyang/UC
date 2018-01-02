@@ -49,7 +49,20 @@
                     android:layout_weight="1"
                     android:background="@drawable/btn_favourites_history"
                     style="?android:attr/buttonBarButtonStyle"/>
-                <!--我的视频按钮-->
+                <!--无图模式按钮-->
+                <ImageButton
+                    android:id="@+id/btn_no_img_mode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:scaleType="center"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/btn_no_img_mode"
+                    style="?android:attr/buttonBarButtonStyle"/>
+                <!--全屏按钮-->
                 <ImageButton
                     android:id="@+id/btn_full_screen"
                     android:layout_width="wrap_content"
@@ -61,32 +74,6 @@
                     android:layout_marginRight="10dp"
                     android:layout_weight="1"
                     android:background="@drawable/btn_full_screen"
-                    style="?android:attr/buttonBarButtonStyle"/>
-                <!--我的小说按钮-->
-                <ImageButton
-                    android:id="@+id/btn_my_novel"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:scaleType="center"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/btn_my_novel"
-                    style="?android:attr/buttonBarButtonStyle"/>
-                <!--我的漫画按钮-->
-                <ImageButton
-                    android:id="@+id/btn_my_comics"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:scaleType="center"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/btn_my_comics"
                     style="?android:attr/buttonBarButtonStyle"/>
                 <!--下载管理按钮-->
                 <ImageButton
@@ -101,11 +88,6 @@
                     android:layout_weight="1"
                     android:background="@drawable/btn_download_management"
                     style="?android:attr/buttonBarButtonStyle"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1">
                 <!--收藏网址按钮-->
                 <ImageButton
                     android:id="@+id/btn_add_to_favorites"
@@ -119,6 +101,12 @@
                     android:layout_weight="1"
                     android:background="@drawable/btn_add_to_favorites"
                     style="?android:attr/buttonBarButtonStyle"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
                 <!--刷新按钮-->
                 <ImageButton
                     android:id="@+id/btn_refresh"
@@ -134,7 +122,7 @@
                     style="?android:attr/buttonBarButtonStyle"/>
                 <!--夜间模式按钮-->
                 <ImageButton
-                    android:id="@+id/btn_night_mode"
+                    android:id="@+id/btn_shotscreen"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:scaleType="center"
@@ -143,11 +131,11 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
                     android:layout_weight="1"
-                    android:background="@drawable/btn_night_mode"
+                    android:background="@drawable/btn_shotscreen"
                     style="?android:attr/buttonBarButtonStyle"/>
-                <!--工具箱按钮-->
+                <!--定时刷新按钮-->
                 <ImageButton
-                    android:id="@+id/btn_toolbox"
+                    android:id="@+id/btn_time_refresh"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:scaleType="center"
@@ -156,7 +144,20 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
                     android:layout_weight="1"
-                    android:background="@drawable/btn_toolbox"
+                    android:background="@drawable/btn_time_refresh"
+                    style="?android:attr/buttonBarButtonStyle"/>
+                <!--退出按钮-->
+                <ImageButton
+                    android:id="@+id/btn_exit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:scaleType="center"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/btn_exit"
                     style="?android:attr/buttonBarButtonStyle"/>
                 <!--空白-->
                 <ImageButton

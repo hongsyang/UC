@@ -59,22 +59,22 @@
                 android:background="@drawable/pink_wall_paper"
                 />
             <ImageButton
-                android:id="@+id/pinkWallPaperU"
+                android:id="@+id/blueWallPaperT"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_marginStart="4dp"
                 android:layout_marginLeft="4dp"
                 android:layout_height="wrap_content"
-                android:background="@drawable/pink_wall_paper"
+                android:background="@drawable/blue_wall_paper"
                 />
             <ImageButton
-                android:id="@+id/pinkWallPaperV"
+                android:id="@+id/blackWallPaperT"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_marginStart="4dp"
                 android:layout_marginLeft="4dp"
                 android:layout_height="wrap_content"
-                android:background="@drawable/pink_wall_paper"
+                android:background="@drawable/black_wall_paper"
                 />
         </LinearLayout>
         <LinearLayout
@@ -89,20 +89,20 @@
 
 
             <ImageButton
-                android:id="@+id/pinkWallPaper2"
+                android:id="@+id/angle_babyWallPaperT"
                 android:layout_width="0dp"
                 android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:background="@drawable/pink_wall_paper"
+                android:layout_height="match_parent"
+                android:background="@drawable/angle_wall_paper"
                 />
             <ImageButton
-                android:id="@+id/pinkWallPaperU2"
+                android:id="@+id/phoneWallPaper"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_marginStart="4dp"
                 android:layout_marginLeft="4dp"
-                android:layout_height="wrap_content"
-                android:background="@drawable/pink_wall_paper"
+                android:layout_height="match_parent"
+                android:background="@drawable/whitebackground"
                 />
             <ImageButton
                 android:id="@+id/pinkWallPaperV2"
@@ -110,8 +110,8 @@
                 android:layout_weight="1"
                 android:layout_marginStart="4dp"
                 android:layout_marginLeft="4dp"
-                android:layout_height="wrap_content"
-                android:background="@drawable/pink_wall_paper"
+                android:layout_height="match_parent"
+                android:background="@drawable/whitebackground"
                 />
         </LinearLayout>
         <LinearLayout
@@ -129,8 +129,9 @@
                 android:id="@+id/pinkWallPaper3"
                 android:layout_width="0dp"
                 android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:background="@drawable/pink_wall_paper"
+                android:layout_height="match_parent"
+                android:background="@drawable/whitebackground"
+
                 />
             <ImageButton
                 android:id="@+id/pinkWallPaperU3"
@@ -138,8 +139,8 @@
                 android:layout_weight="1"
                 android:layout_marginStart="4dp"
                 android:layout_marginLeft="4dp"
-                android:layout_height="wrap_content"
-                android:background="@drawable/pink_wall_paper"
+                android:layout_height="match_parent"
+                android:background="@drawable/whitebackground"
                 />
             <ImageButton
                 android:id="@+id/pinkWallPaperV3"
@@ -147,8 +148,8 @@
                 android:layout_weight="1"
                 android:layout_marginStart="4dp"
                 android:layout_marginLeft="4dp"
-                android:layout_height="wrap_content"
-                android:background="@drawable/pink_wall_paper"
+                android:layout_height="match_parent"
+                android:background="@drawable/whitebackground"
                 />
         </LinearLayout>
 

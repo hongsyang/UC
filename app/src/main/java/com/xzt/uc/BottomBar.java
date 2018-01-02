@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+
 import static com.xzt.uc.SearchActivity.count;
 import static com.xzt.uc.SearchActivity.searchActivity;
 import static com.xzt.uc.SearchActivity.webView;

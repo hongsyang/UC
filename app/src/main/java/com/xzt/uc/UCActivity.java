@@ -1,7 +1,6 @@
 package com.xzt.uc;
 
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -15,6 +14,9 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageButton;
 import android.support.v7.widget.RecyclerView;
+
+import org.litepal.crud.DataSupport;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -184,18 +186,7 @@ public class UCActivity extends AppCompatActivity {
 
 
         //启动上次未关闭的网页
-        SharedPreferences start_get = getSharedPreferences("start", MODE_PRIVATE);
-        start = start_get.getBoolean("start", false);
-        Log.d("UCActivity", "start4=" + start);
-        if(start)
-        {
-            if ((getIntent().getFlags() & Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT) != 0)
-            {
-                //结束你的activity
-                finish();
-                return;
-            }
-        }
+
 
     }
 

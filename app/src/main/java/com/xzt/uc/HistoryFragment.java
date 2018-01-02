@@ -1,6 +1,5 @@
 package com.xzt.uc;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
+
 import org.litepal.crud.DataSupport;
 import java.util.ArrayList;
 import java.util.List;

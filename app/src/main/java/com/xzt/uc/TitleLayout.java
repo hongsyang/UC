@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.xzt.uc.R;
+
 /**
  * Created by T on 2017/12/11.
  */

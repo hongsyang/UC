@@ -17,6 +17,8 @@ import android.widget.RelativeLayout;
 import android.widget.Switch;
 import android.widget.TextView;
 
+import org.litepal.crud.DataSupport;
+
 import static com.xzt.uc.MenuActivity.is_full_screen;
 
 
@@ -58,6 +60,13 @@ public class SettingsActivity extends AppCompatActivity {
         start_open_last_page=(Switch) findViewById(R.id.start_open_last_page);
         TextView  UCfrontpageSet=(TextView) findViewById(R.id.item11);
         TextView  advanceSet=(TextView) findViewById(R.id.item12);
+        TextView clearLog=(TextView) findViewById(R.id.item14);
+        clearLog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DataSupport.deleteAll(HistoryDatabase.class);
+            }
+        });
         final TextView  item5Text2=(TextView) findViewById(R.id.item5text2);
         skinSet.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -110,6 +119,8 @@ public class SettingsActivity extends AppCompatActivity {
                 start_save.apply();
             }
         });
+
+
         UCfrontpageSet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -117,6 +128,8 @@ public class SettingsActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
         advanceSet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -124,6 +137,8 @@ public class SettingsActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
         rotateScreen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

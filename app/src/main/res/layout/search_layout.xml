@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
@@ -12,11 +14,29 @@
         android:completionHint="url"
         android:completionThreshold="1" />
 
-    <WebView
-        android:id="@+id/show"
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/url" />
+        android:layout_below="@+id/url">
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab_Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:src="@drawable/timer"
+            android:scaleType="fitXY"
+            android:layout_gravity="end"
+            app:backgroundTint="#ffffff"
+            tools:layout_editor_absoluteX="333dp"
+            tools:layout_editor_absoluteY="9dp" />
+
+        <WebView
+            android:id="@+id/show"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/btnLayout"
+            android:layout_below="@+id/url" />
+    </FrameLayout>
     <com.xzt.uc.BottomBar
         android:layout_width="match_parent"
         android:layout_height="70px"

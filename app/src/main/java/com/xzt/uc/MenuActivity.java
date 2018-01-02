@@ -5,31 +5,19 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.Window;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageButton;
 import android.view.View.OnClickListener;
-import static com.xzt.uc.SearchActivity.webView;
+import java.io.File;
+import java.io.FileOutputStream;
+import android.os.Environment;
+import android.graphics.Bitmap;
 import static com.xzt.uc.SearchActivity.searchActivity;
+import static com.xzt.uc.SearchActivity.webView;
 import static com.xzt.uc.UCActivity.ucActivity;
-import static com.xzt.uc.AdvanceSetActivity.advanceSetActivity;
-import static com.xzt.uc.DownloadSetActivity.downloadSetActivity;
-import static com.xzt.uc.FavoriteAndHistoryActivity.favoriteAndHistoryActivity;
-import static com.xzt.uc.SettingsActivity.settingsActivity;
-import static com.xzt.uc.UCFrontpageSetActivity.ucFrontpageSetActivity;
-import static com.xzt.uc.WebpageScanSetActivity.webpageScanSetActivity;
-import static com.xzt.uc.WebsiteNavigationActivity.websitenavigationActivity;
-import static com.xzt.uc.SkinActivity.skinActivity;
-
-
-
-
-
-
 
 
 public class MenuActivity extends Activity {
@@ -39,7 +27,7 @@ public class MenuActivity extends Activity {
     //它们的不同点在于：
     //    1.AlertDialog不能指定显示位置，只能默认显示在屏幕最中间（当然也可以通过设置WindowManager参数来改变位置）。
     //    2.而PopupWindow是可以指定显示位置的，随便哪个位置都可以，更加灵活
-    private ImageButton btn_login_in, btn_favourites_history, btn_full_screen, btn_my_novel, btn_my_comics, btn_download_management, btn_add_to_favorites, btn_refresh, btn_night_mode, btn_toolbox, btn_settings, btn_slide_downward, btn_share;
+    private ImageButton btn_login_in, btn_favourites_history, btn_full_screen,  btn_no_img_mode, btn_download_management, btn_add_to_favorites, btn_refresh, btn_shotscreen, btn_time_refresh, btn_settings, btn_slide_downward, btn_share, btn_exit;
     //               立即登陆，        收藏/历史，         我的视频，    我的小说，    我的漫画，          下载管理，              添加网页，          刷新，      夜间模式，      工具箱，      设置，           下滑，          分享；
     private LinearLayout pop_layout;
     //PopupWindow的构造方法：
@@ -59,16 +47,16 @@ public class MenuActivity extends Activity {
         btn_login_in = (ImageButton) this.findViewById(R.id.btn_login_in);
         btn_favourites_history = (ImageButton) this.findViewById(R.id.btn_favourites_history);
         btn_full_screen = (ImageButton) this.findViewById(R.id.btn_full_screen);
-        btn_my_novel = (ImageButton) this.findViewById(R.id.btn_my_novel);
-        btn_my_comics = (ImageButton) this.findViewById(R.id.btn_my_comics);
+        btn_no_img_mode = (ImageButton) this.findViewById(R.id.btn_no_img_mode);
         btn_download_management = (ImageButton) this.findViewById(R.id.btn_download_management);
         btn_add_to_favorites = (ImageButton) this.findViewById(R.id.btn_add_to_favorites);
         btn_refresh = (ImageButton) this.findViewById(R.id.btn_refresh);
-        btn_night_mode = (ImageButton) this.findViewById(R.id.btn_night_mode);
-        btn_toolbox = (ImageButton) this.findViewById(R.id.btn_toolbox);
+        btn_shotscreen = (ImageButton) this.findViewById(R.id.btn_shotscreen);
+        btn_time_refresh = (ImageButton) this.findViewById(R.id.btn_time_refresh);
         btn_settings = (ImageButton) this.findViewById(R.id.btn_settings);
         btn_slide_downward = (ImageButton) this.findViewById(R.id.btn_slide_downward);
         btn_share = (ImageButton) this.findViewById(R.id.btn_share);
+        btn_exit = (ImageButton) this.findViewById(R.id.btn_exit);
 
         pop_layout = (LinearLayout) findViewById(R.id.pop_layout);
 
@@ -83,16 +71,16 @@ public class MenuActivity extends Activity {
         btn_login_in.setOnClickListener(itemsOnClick);
         btn_favourites_history.setOnClickListener(itemsOnClick);
         btn_full_screen.setOnClickListener(itemsOnClick);
-        btn_my_novel.setOnClickListener(itemsOnClick);
-        btn_my_comics.setOnClickListener(itemsOnClick);
+        btn_no_img_mode.setOnClickListener(itemsOnClick);
         btn_download_management.setOnClickListener(itemsOnClick);
         btn_add_to_favorites.setOnClickListener(itemsOnClick);
         btn_refresh.setOnClickListener(itemsOnClick);
-        btn_night_mode.setOnClickListener(itemsOnClick);
-        btn_toolbox.setOnClickListener(itemsOnClick);
+        btn_shotscreen.setOnClickListener(itemsOnClick);
+        btn_time_refresh.setOnClickListener(itemsOnClick);
         btn_settings.setOnClickListener(itemsOnClick);
         btn_slide_downward.setOnClickListener(itemsOnClick);
         btn_share.setOnClickListener(itemsOnClick);
+        btn_exit.setOnClickListener(itemsOnClick);
     }
 
     private OnClickListener  itemsOnClick = new OnClickListener()
@@ -157,9 +145,18 @@ public class MenuActivity extends Activity {
 
 
                     break;
-                case R.id.btn_my_novel:
-                    break;
-                case R.id.btn_my_comics:
+                case R.id.btn_no_img_mode:
+                    if(searchActivity!=null) {
+                        if (searchActivity.isloadimg == true) {
+                            webView.getSettings().setBlockNetworkImage(true);
+                            searchActivity.isloadimg = false;
+                        } else {
+                            webView.getSettings().setBlockNetworkImage(false);
+                            searchActivity.isloadimg = true;
+                        }
+                        webView.reload();
+                        searchActivity.count -= 1;
+                    }
                     break;
                 case R.id.btn_download_management:
                     break;
@@ -170,10 +167,21 @@ public class MenuActivity extends Activity {
                     favorite.save();
                     break;
                 case R.id.btn_refresh:
+                    if(searchActivity!=null) {
+                        btn_refresh.setEnabled(true);
+                        webView.reload();
+                        searchActivity.count-=1;
+                    }
+                    else btn_refresh.setEnabled(false);
                     break;
-                case R.id.btn_night_mode:
+                case R.id.btn_shotscreen:
+                    screenshot();
                     break;
-                case R.id.btn_toolbox:
+                case R.id.btn_time_refresh:
+                    if(searchActivity!=null) {
+                        searchActivity.timerRefresh();
+                        finish();
+                    }
                     break;
                 case R.id.btn_settings:
                     intent=new Intent(MenuActivity.this,SettingsActivity.class);
@@ -182,6 +190,9 @@ public class MenuActivity extends Activity {
                 case R.id.btn_slide_downward:
                     break;
                 case R.id.btn_share:
+                    break;
+                case R.id.btn_exit:
+
                     break;
             }
             finish();
@@ -195,5 +206,31 @@ public class MenuActivity extends Activity {
         finish();
         return true;
         //如果onTouch返回值为true,表示这个Touch事件被onTouch方法处理完毕，不会把Touch事件再传递给Activity
+    }
+
+    private void screenshot()
+    {
+        // 获取屏幕
+        View dView = getWindow().getDecorView();
+        dView.setDrawingCacheEnabled(true);
+        dView.buildDrawingCache();
+        Bitmap bmp = dView.getDrawingCache();
+        if (bmp != null)
+        {
+            try {
+                // 获取内置SD卡路径
+                String sdCardPath = Environment.getExternalStorageDirectory().getPath();
+                // 图片文件路径
+                String filePath = sdCardPath + File.separator + "screenshot.png";
+
+                File file = new File(filePath);
+                FileOutputStream os = new FileOutputStream(file);
+                bmp.compress(Bitmap.CompressFormat.PNG, 100, os);
+                os.flush();
+                os.close();
+            } catch (Exception e) {
+
+            }
+        }
     }
 }

@@ -5,63 +5,111 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:id="@+id/webPageLinear"
+    android:background="#ccffcc"
+
     >
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="180dp"
-        android:text="UC网页背景色预览"
-        android:textSize="25sp"/>
+        android:layout_height="45dp"
+        android:text="   UC网页背景色预览"
+        android:textSize="25sp" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:text="   网页背景色是UC首创的功能。"
+        android:textColor="#000000"
+        android:textSize="15sp" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:text="   采用先进的渲染技术，自由切换网页的背景颜色，"
+        android:textColor="#000000"
+        android:textSize="15sp" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:text="   满足用户保护视力及深度个性化的需求。"
+        android:textColor="#000000"
+        android:textSize="15sp" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:text="   这么逆天的功能，还不赶快试试"
+        android:textColor="#000000"
+        android:textSize="15sp" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#CCCCCC" />
+
     <LinearLayout
 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="4dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingTop="15dp"
         >
         <TextView
-            android:layout_width="0dp"
-            android:layout_height="60dp"
+            android:id="@+id/white_background"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
             android:layout_weight="1"
             android:text="Aa"
+            android:textColor="#000000"
+            android:background="@drawable/shape_circle"
             android:gravity="center"
             android:textSize="30sp"
-            android:background="#ffffff"/>
+            />
         <TextView
+            android:id="@+id/green_background"
             android:text="Aa"
+            android:textColor="#009933"
             android:gravity="center"
+            android:background="@drawable/shape_circle"
             android:textSize="30sp"
-            android:layout_width="0dp"
-            android:layout_height="60dp"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
             android:layout_weight="1"
             android:layout_marginLeft="4dp"
-            android:background="#66FFCC"/>
+            />
         <TextView
+            android:id="@+id/pink_background"
             android:gravity="center"
             android:text="Aa"
+            android:textColor="#ff0066"
             android:textSize="30sp"
-            android:layout_width="0dp"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
             android:layout_marginLeft="4dp"
-            android:layout_height="60dp"
+
             android:layout_weight="1"
-            android:background="#FF99CC"/>
+            android:background="@drawable/shape_circle"/>
         <TextView
+            android:id="@+id/blue_background"
             android:gravity="center"
             android:text="Aa"
+            android:textColor="#0066cc"
             android:textSize="30sp"
-            android:layout_width="0dp"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
             android:layout_marginLeft="4dp"
-            android:layout_height="60dp"
+
             android:layout_weight="1"
-            android:background="#0099CC"/>
+            android:background="@drawable/shape_circle"/>
     </LinearLayout>
     <LinearLayout
 
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="135dp"
         android:orientation="horizontal"
-        android:padding="4dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingTop="15dp"
         >
         <TextView
+            android:id="@+id/white_tv"
             android:gravity="center"
             android:layout_width="0dp"
             android:layout_height="30dp"
@@ -70,6 +118,7 @@
             android:text="经典白"
             />
         <TextView
+            android:id="@+id/green_tv"
             android:gravity="center"
             android:layout_width="0dp"
             android:layout_height="30dp"
@@ -79,6 +128,7 @@
             android:text="护眼绿"
             />
         <TextView
+            android:id="@+id/pink_tv"
             android:gravity="center"
             android:layout_width="0dp"
             android:layout_marginLeft="4dp"
@@ -87,6 +137,7 @@
             android:textSize="15sp"
             android:text="稚气粉" />
         <TextView
+            android:id="@+id/blue_tv"
             android:gravity="center"
             android:layout_width="0dp"
             android:layout_marginLeft="4dp"
@@ -94,7 +145,14 @@
             android:layout_weight="1"
             android:textSize="15sp"
             android:text="天际蓝"/>
+
     </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#ffffff"/>
+
 
 
 </LinearLayout>

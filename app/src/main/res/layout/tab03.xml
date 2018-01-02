@@ -10,7 +10,9 @@
         android:orientation="vertical"
         android:padding="4dp">
         <LinearLayout
+            android:id="@+id/fontLinear1"
             android:orientation="horizontal"
+            android:background="#ffffff"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <TextView
@@ -19,7 +21,8 @@
                 android:layout_weight="1"
                 android:background="@drawable/zi_yuan"/>
             <TextView
-                android:layout_width="70dp"
+                android:id="@+id/font_gou1"
+                android:layout_width="90dp"
                 android:layout_height="90dp"
                 android:background="@drawable/zi_dui"/>
 
@@ -28,23 +31,69 @@
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
             android:background="#CCCCCC" />
+        <LinearLayout
+            android:id="@+id/fontLinear2"
+            android:orientation="horizontal"
+            android:background="#ffffff"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="90dp"
+                android:layout_weight="1"
+                android:background="@drawable/zi_yuan"/>
+            <TextView
+                android:id="@+id/font_gou2"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:background="@drawable/zi_dui"/>
 
-        <TextView
+        </LinearLayout>
+        <View
             android:layout_width="match_parent"
-            android:layout_height="90dp"
-            android:background="@drawable/zi_sa_tuo"/>
-        <TextView
+            android:layout_height="0.5dp"
+            android:background="#CCCCCC" />
+        <LinearLayout
+            android:id="@+id/fontLinear3"
+            android:orientation="horizontal"
+            android:background="#ffffff"
             android:layout_width="match_parent"
-            android:layout_height="90dp"
-            android:background="@drawable/zi_sa_tuo"/>
-        <TextView
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="90dp"
+                android:layout_weight="1"
+                android:background="@drawable/zi_yuan"/>
+            <TextView
+                android:id="@+id/font_gou3"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:background="@drawable/zi_dui"/>
+
+        </LinearLayout>
+
+        <View
             android:layout_width="match_parent"
-            android:layout_height="90dp"
-            android:background="@drawable/zi_sa_tuo"/>
-        <TextView
+            android:layout_height="0.5dp"
+            android:background="#CCCCCC" />
+        <LinearLayout
+            android:id="@+id/fontLinear4"
+            android:background="#ffffff"
             android:layout_width="match_parent"
-            android:layout_height="90dp"
-            android:background="@drawable/zi_sa_tuo"/>
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="90dp"
+                android:layout_weight="1"
+                android:background="@drawable/zi_yuan"/>
+            <TextView
+                android:id="@+id/font_gou4"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:background="@drawable/zi_dui"/>
+
+        </LinearLayout>
+
 
 
     </LinearLayout>

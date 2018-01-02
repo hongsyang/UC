@@ -16,6 +16,10 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.xzt.uc.Favorite;
+import com.xzt.uc.R;
+
 import org.litepal.crud.DataSupport;
 import java.util.ArrayList;
 import java.util.List;
