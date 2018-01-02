@@ -4,19 +4,11 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Toast;
+
 import static com.xzt.uc.SearchActivity.count;
 import static com.xzt.uc.SearchActivity.searchActivity;
 import static com.xzt.uc.SearchActivity.webView;
@@ -32,7 +24,6 @@ public class BottomBar extends LinearLayout
 
     public static ImageButton btn_backward;
     public static ImageButton btn_forward;
-    public static ImageButton btn_home;
 
 
     public BottomBar(final Context context, AttributeSet attrs)
@@ -56,11 +47,20 @@ public class BottomBar extends LinearLayout
             @Override
             public void onClick(View view)
             {
-                Log.d("1","bbb");
-                Intent intent = new Intent();
-                intent.putExtra("data_return","back");
-                ucActivity.setResult(ucActivity.RESULT_OK,intent);
-                ucActivity.finish();
+                if((Activity)context == searchActivity)
+                {
+                    webView.goBack();
+                    count-=2;
+                    if(count<0)
+                    {
+                        Intent intent=new Intent(context,UCActivity.class);
+                        searchActivity.startActivity(intent);
+                        searchActivity.finish();
+                    }
+                }
+                else{
+                    ucActivity.finish();
+                }
 
             }
         });
@@ -69,11 +69,10 @@ public class BottomBar extends LinearLayout
         btn_forward = (ImageButton) findViewById(R.id.btn_forward);
         btn_forward.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Log.d("1","fff");
-                Intent intent = new Intent();
-                intent.putExtra("data_return","forward");
-                ucActivity.setResult(ucActivity.RESULT_OK,intent);
-                ucActivity.finish();
+                if((Activity)context == searchActivity)
+                {
+                    webView.goForward();
+                }
             }
         });
 
@@ -89,7 +88,6 @@ public class BottomBar extends LinearLayout
 
             }
         });
-
 
     }
 }

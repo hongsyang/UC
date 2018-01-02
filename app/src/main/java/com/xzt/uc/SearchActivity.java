@@ -232,7 +232,6 @@ public class SearchActivity extends AppCompatActivity {
             public void onPageStarted(WebView view, String strUrl, Bitmap favicon)
             {
                 super.onPageStarted(view, strUrl, favicon);
-
                 url.setText(strUrl);
                 ((InputMethodManager)getSystemService(INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),InputMethodManager.HIDE_NOT_ALWAYS);
             }
