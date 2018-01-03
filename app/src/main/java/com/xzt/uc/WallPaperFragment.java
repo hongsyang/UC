@@ -33,7 +33,6 @@ import java.io.ByteArrayOutputStream;
 public class WallPaperFragment extends Fragment {
 
     private View view;
-    private Typeface typeface1;
 
     @Nullable
     @Override
@@ -47,8 +46,7 @@ public class WallPaperFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        //更换字体
-        //MainActivity.titleNameDress.setTypeface(MainActivity.typeface);
+
 
 
         ImageButton pinkWallPaper =view.findViewById(R.id.pinkWallPaperT);
@@ -71,9 +69,6 @@ public class WallPaperFragment extends Fragment {
             public void onClick(View v) {
 
 
-                //MainActivity.buttonBackDress.getBackground().setAlpha(50);
-                //MainActivity.btnEditDress.getBackground().setAlpha(50);
-                //MainActivity.titleNameDress.getBackground().setAlpha(50);
 
 
                 //MainActivity.personalDecorateL.setBackgroundResource(PersonalDecorateLDrawable);

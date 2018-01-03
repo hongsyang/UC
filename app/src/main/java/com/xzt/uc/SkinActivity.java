@@ -71,22 +71,22 @@ public class SkinActivity extends FragmentActivity implements View.OnClickListen
 
 
         //需要更改皮肤的控件
-        buttonBackDress=(ImageButton) findViewById(R.id.btnBackBDress);
-        titleNameDress=(TextView) findViewById(R.id.title_nameDress);
-        topL=(LinearLayout)findViewById(R.id.topL);
-        btnEditDress=(TextView) findViewById(R.id.btnEditDress);
-        personalDecorateL=(LinearLayout) findViewById(R.id.personalDecorateLinearLayout);
+        buttonBackDress= findViewById(R.id.btnBackBDress);
+        titleNameDress=findViewById(R.id.title_nameDress);
+        topL=findViewById(R.id.topL);
+        btnEditDress=findViewById(R.id.btnEditDress);
+        personalDecorateL=findViewById(R.id.personalDecorateLinearLayout);
 
 
 
 
 
         mViewPager=findViewById(R.id.id_view_pager);
-        textWallPaper=(TextView) findViewById(R.id.text_wallpaper);
-        textWebPage=(TextView) findViewById(R.id.text_webPage);
-        textFont=(TextView)findViewById(R.id.text_font);
-        phonePictureT=(TextView)findViewById(R.id.phonePicture);
-        editWallPaperT=(TextView) findViewById(R.id.editWallPaper);
+        textWallPaper=findViewById(R.id.text_wallpaper);
+        textWebPage= findViewById(R.id.text_webPage);
+        textFont=findViewById(R.id.text_font);
+        phonePictureT=findViewById(R.id.phonePicture);
+        editWallPaperT=findViewById(R.id.editWallPaper);
 
         //字体设置
         mgr=getAssets();

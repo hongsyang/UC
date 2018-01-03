@@ -38,13 +38,15 @@ public class SettingsActivity extends AppCompatActivity {
 
     private Button button;
     private SeekBar lightSeek;
+
     private boolean flag = false;
+    static TextView item5Text2;
     private int defalutValue = 75;
 
     public static SettingsActivity settingsActivity = null;
     private TitleLayout titleLayoutMain;
     private RelativeLayout rotateScreen;
-    private String[] rotateScreenList=new String[]{"跟随系统","锁定横屏","锁定竖屏"};
+    static String[] rotateScreenList=new String[]{"跟随系统","锁定横屏","锁定竖屏"};
     public static boolean start;//start_open_last_page开关是否开启
     public static Switch start_open_last_page;
 
@@ -69,6 +71,18 @@ public class SettingsActivity extends AppCompatActivity {
         if(actionBar!=null){
             actionBar.hide();
         }
+        item5Text2=findViewById(R.id.item5text2);
+        final String textScreen=UCActivity.pref1.getString("TextScreen",rotateScreenList[0]);
+        item5Text2.setText(textScreen);
+        if (item5Text2.getText()=="跟随系统"){
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
+        }
+        if(item5Text2.getText()=="锁定横屏"){
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        }
+        if(item5Text2.getText()=="锁定竖屏"){
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        }
         titleLayoutMain=(TitleLayout) findViewById(R.id.title_layout_main);
         titleLayoutMain.setTitle("更多设置");
         TextView skinSet=(TextView)findViewById(R.id.item4);
@@ -84,7 +98,7 @@ public class SettingsActivity extends AppCompatActivity {
                 DataSupport.deleteAll(HistoryDatabase.class);
             }
         });
-        final TextView  item5Text2=(TextView) findViewById(R.id.item5text2);
+
         skinSet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -114,7 +128,7 @@ public class SettingsActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isCheck)
             {
-                SharedPreferences check_get = getSharedPreferences("check", MODE_PRIVATE);
+                SharedPreferences check_get = getSharedPreferences("isCheck", MODE_PRIVATE);
                 isCheck = check_get.getBoolean("isCheck", false);
                 Log.d("SettingsActivity", "isCheck=" + isCheck);
                 if(isCheck)
@@ -128,7 +142,7 @@ public class SettingsActivity extends AppCompatActivity {
                     Log.d("SettingsActivity", "start2=" + start);
                 }
 
-                SharedPreferences.Editor check_save = getSharedPreferences("check", MODE_PRIVATE).edit();
+                SharedPreferences.Editor check_save = getSharedPreferences("isCheck", MODE_PRIVATE).edit();
                 check_save.putBoolean("isCheck", isCheck);
                 check_save.apply();
                 SharedPreferences.Editor start_save = getSharedPreferences("start", MODE_PRIVATE).edit();
@@ -162,16 +176,24 @@ public class SettingsActivity extends AppCompatActivity {
                 new AlertDialog.Builder(SettingsActivity.this).setItems(rotateScreenList, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        item5Text2.setText(rotateScreenList[which]);
                         if (which==0){
+                            item5Text2.setText(rotateScreenList[which]);
+                            UCActivity.editor1.putString("TextScreen",rotateScreenList[which]);
                             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
+                            UCActivity.editor1.apply();
                         }
-                        if(which==1){
-                            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-                        }
+                        if(which==1)
+                            item5Text2.setText(rotateScreenList[which]);
+                        UCActivity.editor1.putString("TextScreen",rotateScreenList[which]);
+                        UCActivity.editor1.apply();
+                        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
                         if(which==2){
+                            item5Text2.setText(rotateScreenList[which]);
+                            UCActivity.editor1.putString("TextScreen",rotateScreenList[which]);
+                            UCActivity.editor1.apply();
                             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
                         }
+
                         dialog.dismiss();
                     }
                 }).show();
