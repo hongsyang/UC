@@ -23,8 +23,8 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.Toast;
-
-import java.util.*;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import android.os.Handler;
@@ -50,12 +50,6 @@ public class SearchActivity extends AppCompatActivity {
     public int time_count;
     public FloatingActionButton fla_btn;
 
-    public static int tag =0;
-    public  static LinkedList<URL> Link;
-    public static URL obj = null;
-    public static Node cur = new Node<URL>();
-    public int position;
-
     String[] booksArray = new String[]
             {
                     "http://maps.google.com",
@@ -68,8 +62,6 @@ public class SearchActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        Link = new LinkedList();
 
         SharedPreferences full_screen_get = getSharedPreferences("full_screen", MODE_PRIVATE);
         is_full_screen = full_screen_get.getBoolean("full_screen", false);
@@ -84,7 +76,6 @@ public class SearchActivity extends AppCompatActivity {
         setContentView(R.layout.search_layout);
         searchActivity = this;
         count=0;
-        //cur = Link.head;
         isloadimg=true;
         fla_btn=(FloatingActionButton) findViewById(R.id.fab_Button);
         Intent intent=getIntent();
@@ -96,171 +87,105 @@ public class SearchActivity extends AppCompatActivity {
 
         String website1=intent.getStringExtra("website");
         webView.loadUrl(website1);
-        Link.insert(new URL(website1),0);
-        cur = Link.getNode(1);
-
 
         String sina1=intent.getStringExtra("sina");
         webView.loadUrl(sina1);
-        Link.insert(new URL(sina1),0);
-        cur = Link.getNode(1);
 
         String baidu1=intent.getStringExtra("baidu");
         webView.loadUrl(baidu1);
-        Link.insert(new URL(baidu1),0);
-        cur = Link.getNode(1);
-        //Toast.makeText(SearchActivity.this,((URL)cur.getData()).getAddress(),Toast.LENGTH_SHORT).show();
 
         String weibo1=intent.getStringExtra("weibo");
         webView.loadUrl(weibo1);
-        Link.insert(new URL(weibo1),0);
-        cur = Link.getNode(1);
 
         String guazi1=intent.getStringExtra("guazi");
         webView.loadUrl(guazi1);
-        Link.insert(new URL(guazi1),0);
-        cur = Link.getNode(1);
 
         String tongcheng1=intent.getStringExtra("tongcheng");
         webView.loadUrl(tongcheng1);
-        Link.insert(new URL(tongcheng1),0);
-        cur = Link.getNode(1);
 
         String taobao1=intent.getStringExtra("taobao");
         webView.loadUrl(taobao1);
-        Link.insert(new URL(taobao1),0);
-        cur = Link.getNode(1);
 
         String ctrip1=intent.getStringExtra("ctrip");
         webView.loadUrl(ctrip1);
-        Link.insert(new URL(ctrip1),0);
-        cur = Link.getNode(1);
 
         String suning1=intent.getStringExtra("suning");
         webView.loadUrl(suning1);
-        Link.insert(new URL(suning1),0);
-        cur = Link.getNode(1);
 
         String youku1=intent.getStringExtra("youku");
         webView.loadUrl(youku1);
-        Link.insert(new URL(youku1),0);
-        cur = Link.getNode(1);
 
 
 
 
         String website_navigation1=intent.getStringExtra("website_navigation");
         webView.loadUrl(website_navigation1);
-        Link.insert(new URL(website_navigation1),0);
-        cur = Link.getNode(1);
 
         String xinlangweibo1=intent.getStringExtra("xinlangweibo");
         webView.loadUrl(xinlangweibo1);
-        Link.insert(new URL(xinlangweibo1),0);
-        cur = Link.getNode(1);
 
         String aitaobao1=intent.getStringExtra("aitaobao");
         webView.loadUrl(aitaobao1);
-        Link.insert(new URL(aitaobao1),0);
-        cur = Link.getNode(1);
 
         String tmall1=intent.getStringExtra("tmall");
         webView.loadUrl(tmall1);
-        Link.insert(new URL(tmall1),0);
-        cur = Link.getNode(1);
 
         String qunar1=intent.getStringExtra("qunar");
         webView.loadUrl(qunar1);
-        Link.insert(new URL(qunar1),0);
-        cur = Link.getNode(1);
 
         String shenma_search1=intent.getStringExtra("shenma_search");
         webView.loadUrl(shenma_search1);
-        Link.insert(new URL(shenma_search1),0);
-        cur = Link.getNode(1);
 
         String ticket_taobao1=intent.getStringExtra("ticket_taobao");
         webView.loadUrl(ticket_taobao1);
-        Link.insert(new URL(ticket_taobao1),0);
-        cur = Link.getNode(1);
 
         String lifestyle1=intent.getStringExtra("lifestyle");
         webView.loadUrl(lifestyle1);
-        Link.insert(new URL(lifestyle1),0);
-        cur = Link.getNode(1);
 
         String autohome1=intent.getStringExtra("autohome");
         webView.loadUrl(autohome1);
-        Link.insert(new URL(autohome1),0);
-        cur = Link.getNode(1);
 
         String interesting_encyclopedia1=intent.getStringExtra("interesting_encyclopedia");
         webView.loadUrl(interesting_encyclopedia1);
-        Link.insert(new URL(interesting_encyclopedia1),0);
-        cur = Link.getNode(1);
 
         String youku_video1=intent.getStringExtra("youku_video");
         webView.loadUrl(youku_video1);
-        Link.insert(new URL(youku_video1),0);
-        cur = Link.getNode(1);
 
         String btn_lottery1=intent.getStringExtra("btn_lottery");
         webView.loadUrl(btn_lottery1);
-        Link.insert(new URL(btn_lottery1),0);
-        cur = Link.getNode(1);
 
 
 
 
         String news1=intent.getStringExtra("news1");
         webView.loadUrl(news1);
-        Link.insert(new URL(news1),1);
-        cur = Link.getNode(1);
 
         String news2=intent.getStringExtra("news2");
         webView.loadUrl(news2);
-        Link.insert(new URL(news2),1);
-        cur = Link.getNode(1);
 
         String news3=intent.getStringExtra("news3");
         webView.loadUrl(news3);
-        Link.insert(new URL(news3),1);
-        cur = Link.getNode(1);
 
         String news4=intent.getStringExtra("news4");
         webView.loadUrl(news4);
-        Link.insert(new URL(news4),1);
-        cur = Link.getNode(1);
 
         String news5=intent.getStringExtra("news5");
         webView.loadUrl(news5);
-        Link.insert(new URL(news5),1);
-        cur = Link.getNode(1);
 
         String news6=intent.getStringExtra("news6");
         webView.loadUrl(news6);
-        Link.insert(new URL(news6),1);
-        cur = Link.getNode(1);
 
         String news7=intent.getStringExtra("news7");
         webView.loadUrl(news7);
-        Link.insert(new URL(news7),1);
-        cur = Link.getNode(1);
 
         String news8=intent.getStringExtra("news8");
         webView.loadUrl(news8);
-        Link.insert(new URL(news8),1);
-        cur = Link.getNode(1);
 
         String news9=intent.getStringExtra("news9");
         webView.loadUrl(news9);
-        Link.insert(new URL(news9),1);
-        cur = Link.getNode(1);
 
         String news10=intent.getStringExtra("news10");
         webView.loadUrl(news10);
-        Link.insert(new URL(news10),1);
-        cur = Link.getNode(1);
 
 
 
@@ -275,18 +200,6 @@ public class SearchActivity extends AppCompatActivity {
 
         //设置浏览器支持javascript
         webView.loadUrl(str);
-        Node<URL> tem ;
-        tem = cur;
-        int position = 0;
-        while(tem.getPre() != null)
-        {
-            tem=tem.getPre();
-            position++;
-        }
-
-        Link.insert(new URL(str),position);
-        cur = Link.getNode(position+1);
-
         webView.getSettings().setJavaScriptEnabled(true);
         WebSettings settings = webView.getSettings();
         settings.setDomStorageEnabled(true);//开启DOM
@@ -346,21 +259,7 @@ public class SearchActivity extends AppCompatActivity {
                         historyDatabase.setTitle(title);
                         historyDatabase.setUrl(view.getUrl());
                         historyDatabase.save();
-                        /*if(tag == 1)
-                        {
-                            Node<URL> tem ;
-                            tem = cur;
-                            int position = 0;
-                            while(tem.getPre() != null)
-                            {
-                                tem=tem.getPre();
-                                position++;
-                            }
-
-                            Link.insert(new URL(webView.getUrl()),position);
-                            cur = Link.getNode(position+1);
-                        }
-                        tag =1;*/
+                        count += 1;
                         string=title;
                     }
                 }
@@ -386,18 +285,6 @@ public class SearchActivity extends AppCompatActivity {
                     }
 
                     webView.loadUrl(strUrl);
-                    Node<URL> tem1;
-                    tem1 = cur;
-                    int position = 0;
-                    while(tem1.getPre() != null)
-                    {
-                        tem1=tem1.getPre();
-                        position++;
-                    }
-
-                    Link.insert(new URL(strUrl),position);
-                    cur = Link.getNode(position+1);
-
                     ((InputMethodManager)getSystemService(INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),InputMethodManager.HIDE_NOT_ALWAYS);
 
                     return true;
