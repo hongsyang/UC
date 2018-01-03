@@ -5,6 +5,18 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
+
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+
+
     <!-- 申请上网权限 -->
     <application
         android:name="org.litepal.LitePalApplication"
@@ -40,6 +52,41 @@
         <activity android:name=".LoginActivity"/>
         <activity android:name=".SignIn"/>
         <activity android:name=".SignUp"/>
+        <activity android:name=".AboutUCActivity" android:label="关于UC"/>
+        <activity android:name=".AdActivity" android:label="广告过滤"/>
+        <activity android:name=".FirstActivity" android:label="用户协议"/>
+        <activity android:name=".SecondActivity" android:label="用户协议"/>
+        <activity android:name=".ThirdActivity" android:label="用户协议"/>
+        <activity android:name=".SpeedActivity" android:label="极速/省流"/>
+        <activity android:name=".UserProtocolActivity" android:label="用户协议"/>
+
+
+        <activity
+            android:name="com.mob.tools.MobUIShell"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:windowSoftInputMode="stateHidden|adjustResize" >
+
+            <!-- 调用新浪原生SDK，需要注册的回调activity -->
+            <intent-filter>
+                <action android:name="com.sina.weibo.sdk.action.ACTION_SDK_REQ_ACTIVITY" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+            <!--集成line客户端登录授权，需要添如下格式的过滤器-->
+            <intent-filter>
+                <data android:scheme="line.1477692153" />
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+        </activity>
+        <!-- 填写您从Mob开发者后台中得到的Appkey和AppSecret -->
+        <meta-data android:name="Mob-AppKey" android:value="236a79610ae52"/>
+        <meta-data android:name="Mob-AppSecret" android:value="2acb8d8fdfc96b5f0265c0916ce296dc"/>
+
+
     </application>
 
 </manifest>

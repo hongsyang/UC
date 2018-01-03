@@ -1,0 +1,87 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginTop="15dp"
+        android:background="#CCCCCC" />
+
+    <TextView
+        android:id="@+id/view1"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:text="UC软件使用许可协议"
+        android:textSize="30px"
+        android:textColor="#000"
+        android:gravity="center_vertical"
+        android:paddingLeft="17dp"
+        android:drawableRight="@drawable/triangle"
+        android:paddingRight="20dp"
+        android:background="#fff"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#CCCCCC" />
+
+    <TextView
+        android:id="@+id/view2"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:text="UC隐私保护声明"
+        android:textSize="30px"
+        android:textColor="#000"
+        android:gravity="center_vertical"
+        android:paddingLeft="17dp"
+        android:drawableRight="@drawable/triangle"
+        android:paddingRight="20dp"
+        android:background="#fff"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#CCCCCC" />
+
+    <TextView
+        android:id="@+id/view3"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:text="UC用户体验改进计划"
+        android:textSize="30px"
+        android:textColor="#000"
+        android:gravity="center_vertical"
+        android:paddingLeft="17dp"
+        android:drawableRight="@drawable/triangle"
+        android:paddingRight="20dp"
+        android:background="#fff"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#CCCCCC" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginTop="15dp"
+        android:background="#CCCCCC" />
+
+    <Switch
+
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:text="参加用户体验改进计划"
+        android:paddingLeft="17dp"
+        android:textSize="7pt"
+        android:paddingRight="10dp"
+        android:background="#fff"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#CCCCCC" />
+
+</LinearLayout>

@@ -1,0 +1,140 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#5CACEE">
+
+        <TextView
+            android:id="@+id/view_1"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="50dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:background="@drawable/shap_circle"
+            android:gravity="center"
+            android:text="已为您累积节省移动数据流量0KB"
+            android:textColor="#fff"
+            android:textSize="15sp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"/> //空心圆技术：自定义
+
+        <TextView
+            android:id="@+id/view_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/view_1"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="22dp"
+            android:text="今日使用：0KB"
+            android:textColor="#fff"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/view_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/button_2"
+            android:layout_alignRight="@+id/button_2"
+            android:layout_below="@+id/view_1"
+            android:layout_marginEnd="15dp"
+            android:layout_marginRight="15dp"
+            android:text="累积使用：0KB"
+            android:textColor="#fff"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/button_1"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_alignLeft="@+id/button_2"
+            android:layout_alignParentTop="true"
+            android:layout_alignStart="@+id/button_2"
+            android:background="@drawable/shape_blue_oval"
+            android:text="清零"
+            android:textColor="#fff"
+            android:textSize="15sp" />
+
+//圆角技术：自定义shap_blue_oval.xml
+
+        <Button
+            android:id="@+id/button_2"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:layout_alignBaseline="@+id/view_1"
+            android:layout_alignBottom="@+id/view_1"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginEnd="12dp"
+            android:layout_marginRight="12dp"
+            android:text="分享"
+            android:textColor="#fff"
+            android:textSize="15sp"
+            android:background="@drawable/shape_blue_oval"/>
+
+    </RelativeLayout>
+
+    <Switch
+        android:id="@+id/switch_1"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="#fff"
+        android:text="云端加速"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        android:paddingLeft="10dp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#CCCCCC"
+       />
+
+    <Switch
+        android:id="@+id/switch_2"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="#fff"
+        android:text="极速模式"
+        android:textColor="#000"
+        android:textSize="18sp"
+        android:paddingLeft="10dp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#CCCCCC" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:text="图片质量"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#CCCCCC" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#CCCCCC" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </RelativeLayout>
+
+</LinearLayout>

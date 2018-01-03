@@ -16,6 +16,18 @@ import android.widget.CompoundButton;
 import android.widget.RelativeLayout;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.content.Intent;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.view.WindowManager;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.ListView;
+import android.widget.RelativeLayout;
+import android.widget.SeekBar;
+import android.widget.TextView;
 
 import org.litepal.crud.DataSupport;
 
@@ -23,6 +35,11 @@ import static com.xzt.uc.MenuActivity.is_full_screen;
 
 
 public class SettingsActivity extends AppCompatActivity {
+
+    private Button button;
+    private SeekBar lightSeek;
+    private boolean flag = false;
+    private int defalutValue = 75;
 
     public static SettingsActivity settingsActivity = null;
     private TitleLayout titleLayoutMain;
@@ -160,5 +177,84 @@ public class SettingsActivity extends AppCompatActivity {
                 }).show();
             }
         });
+
+        RelativeLayout speed = (RelativeLayout) findViewById(R.id.item0);
+        speed.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(SettingsActivity.this, SpeedActivity.class);
+                startActivity(intent);
+            }
+        });//极速/省流对应的活动
+
+        TextView ad = (TextView) findViewById(R.id.item2);
+        ad.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(SettingsActivity.this, AdActivity.class);
+                startActivity(intent);
+            }
+        });//广告过滤对应的活动
+
+        CheckBox checkBox = (CheckBox) findViewById(R.id.item6_check);
+        lightSeek = (SeekBar) findViewById(R.id.item6_seek);
+        lightSeek.setOnSeekBarChangeListener(seekBarChange);
+
+
+        TextView aboutUC = (TextView) findViewById(R.id.item16);
+        aboutUC.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(SettingsActivity.this,AboutUCActivity.class);
+                startActivity(intent);
+            }
+        });//关于UC对应的活动
+
     }
+
+    //以下是关于亮度的一些方法
+    public void System (View v) {
+        if (flag) {
+            flag = false;
+            setScreenLight(defalutValue);
+        } else {
+            flag = true;
+
+            boolean isAutoBrightness = SystemBrightManager.isAutoBrightness(this);
+            if (isAutoBrightness) {  // 自动调整亮度
+                SystemBrightManager.setBrightness(this, -1);
+            } else {
+                int brightValue = SystemBrightManager.getBrightness(this);
+                SystemBrightManager.setBrightness(this, brightValue);
+            }
+        }
+    }
+
+    private SeekBar.OnSeekBarChangeListener seekBarChange = new SeekBar.OnSeekBarChangeListener() {
+        @Override
+        public void onStopTrackingTouch(SeekBar seekBar) {
+        }
+
+        @Override
+        public void onStartTrackingTouch(SeekBar seekBar) {
+        }
+
+        @Override
+        public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+            setScreenLight(progress);
+        }
+    };
+
+    public void setScreenLight(int progress) {
+        if (progress < 1) {
+            progress = 1;
+        } else if (progress > 255) {
+            progress = 255;
+        }
+        final WindowManager.LayoutParams attrs = getWindow().getAttributes();
+        attrs.screenBrightness = progress / 255f;
+        getWindow().setAttributes(attrs);
+        defalutValue = progress;
+    }
+
 }

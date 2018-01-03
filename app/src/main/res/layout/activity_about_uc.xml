@@ -1,0 +1,71 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginTop="30dp"
+        android:background="#CCCCCC" />
+
+    <Switch
+        android:id="@+id/switch_WiFi"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:text="WiFi下自动更新UC"
+        android:textSize="7pt"
+        android:textColor="#000"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#CCCCCC" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginTop="15dp"
+        android:background="#CCCCCC" />
+
+    <TextView
+        android:id="@+id/user_protocol"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:text="用户协议"
+        android:textColor="#000"
+        android:textSize="7pt"
+        android:gravity="center_vertical"
+        android:drawableRight="@drawable/triangle"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#CCCCCC" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginTop="15dp"
+        android:background="#CCCCCC" />
+
+    <TextView
+        android:id="@+id/help_status"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:text="帮助说明"
+        android:gravity="center_vertical"
+        android:textSize="7pt"
+        android:textColor="#000"
+        android:paddingLeft="20dp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#CCCCCC" />
+
+</LinearLayout>

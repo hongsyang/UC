@@ -1,6 +1,18 @@
 package com.xzt.uc;
 
 
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
+
+import com.mob.commons.SHARESDK;
+
+import cn.sharesdk.framework.ShareSDK;
+import cn.sharesdk.onekeyshare.OnekeyShare;
+
+
+
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -192,6 +204,11 @@ public class MenuActivity extends Activity {
                 case R.id.btn_slide_downward:
                     break;
                 case R.id.btn_share:
+                    OnekeyShare onekeyShare=new OnekeyShare();
+                    onekeyShare.setTitle("uc分享");
+                    onekeyShare.setText("Hello Sina");
+                    onekeyShare.show(MenuActivity.this);
+
                     break;
                 case R.id.btn_exit:
 
