@@ -80,6 +80,7 @@ public class SearchActivity extends AppCompatActivity {
         count=0;
         isloadimg=true;
         fla_btn=(FloatingActionButton) findViewById(R.id.fab_Button);
+        fla_btn.setEnabled(false);
         Intent intent=getIntent();
         String str=intent.getStringExtra("str");
         final Activity activity = this;

@@ -16,6 +16,9 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
+import static com.xzt.uc.UCActivity.ucActivity;
+import static com.xzt.uc.SearchActivity.searchActivity;
+import static com.xzt.uc.SearchActivity.webView;
 
 import com.xzt.uc.Favorite;
 import com.xzt.uc.R;
@@ -185,9 +188,17 @@ public class favoriteFragment extends Fragment {
                     if(!isShow){
                         Favorite favorite=mFavoriteList.get(position);
                         returnUrl=favorite.getUrl();
-                        Intent intent=new Intent();
-                        intent.putExtra("data_return",returnUrl);
-                        getActivity().setResult(Activity.RESULT_OK,intent);
+                        if(ucActivity!=null) {
+                            ucActivity.finish();
+                        }
+                        if (searchActivity != null) {
+                            webView.loadUrl(returnUrl);
+                        } else {
+                            Intent intent = new Intent(getActivity(), SearchActivity.class);
+                            intent.putExtra("str",returnUrl);
+                            startActivity(intent);
+                        }
+
                         getActivity().finish();
                     }
                     else{

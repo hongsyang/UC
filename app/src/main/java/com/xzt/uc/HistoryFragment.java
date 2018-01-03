@@ -201,16 +201,16 @@ public class HistoryFragment extends Fragment {
                                 History history=mHistory.get(position);
                                 returnUrl=history.getUrl();
                                 if(ucActivity!=null) {
-                                    if (searchActivity != null) {
-                                        webView.loadUrl(returnUrl);
-                                        ucActivity.finish();
-                                    } else {
-                                        ucActivity.finish();
-                                        Intent intent = new Intent(getActivity(), SearchActivity.class);
-                                        intent.putExtra("str",returnUrl);
-                                        startActivity(intent);
-                                    }
+                                    ucActivity.finish();
                                 }
+                                if (searchActivity != null) {
+                                    webView.loadUrl(returnUrl);
+                                } else {
+                                    Intent intent = new Intent(getActivity(), SearchActivity.class);
+                                    intent.putExtra("str",returnUrl);
+                                    startActivity(intent);
+                                }
+
                                 getActivity().finish();
                             }
                             else{
