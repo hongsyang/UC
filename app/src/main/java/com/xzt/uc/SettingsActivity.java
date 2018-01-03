@@ -46,6 +46,7 @@ public class SettingsActivity extends AppCompatActivity {
     private RelativeLayout rotateScreen;
     private String[] rotateScreenList=new String[]{"跟随系统","锁定横屏","锁定竖屏"};
     public static boolean start;//start_open_last_page开关是否开启
+    public static boolean not_change_start;
     public static Switch start_open_last_page;
 
     @Override
@@ -114,7 +115,7 @@ public class SettingsActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isCheck)
             {
-                SharedPreferences check_get = getSharedPreferences("check", MODE_PRIVATE);
+                SharedPreferences check_get = getSharedPreferences("isCheck", MODE_PRIVATE);
                 isCheck = check_get.getBoolean("isCheck", false);
                 Log.d("SettingsActivity", "isCheck=" + isCheck);
                 if(isCheck)
@@ -126,9 +127,10 @@ public class SettingsActivity extends AppCompatActivity {
                 {
                     start = true;
                     Log.d("SettingsActivity", "start2=" + start);
+                    Log.d("SettingsActivity", "isCheck2=" + isCheck);
                 }
 
-                SharedPreferences.Editor check_save = getSharedPreferences("check", MODE_PRIVATE).edit();
+                SharedPreferences.Editor check_save = getSharedPreferences("isCheck", MODE_PRIVATE).edit();
                 check_save.putBoolean("isCheck", isCheck);
                 check_save.apply();
                 SharedPreferences.Editor start_save = getSharedPreferences("start", MODE_PRIVATE).edit();

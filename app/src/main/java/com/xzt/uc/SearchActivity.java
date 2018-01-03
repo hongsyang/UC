@@ -34,6 +34,7 @@ import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import static com.xzt.uc.BottomBar.btn_forward;
 import static com.xzt.uc.MenuActivity.is_full_screen;
+import static com.xzt.uc.SettingsActivity.not_change_start;
 import static com.xzt.uc.SettingsActivity.start;
 
 
@@ -49,6 +50,7 @@ public class SearchActivity extends AppCompatActivity {
     public boolean isloadimg;
     public int time_count;
     public FloatingActionButton fla_btn;
+    public static boolean flag;
 
     String[] booksArray = new String[]
             {
@@ -191,6 +193,20 @@ public class SearchActivity extends AppCompatActivity {
 
 
         //启动上次未关闭的网页
+        SharedPreferences start_get = getSharedPreferences("start", MODE_PRIVATE);
+        start = start_get.getBoolean("start", false);
+        Log.d("UCActivity", "start5=" + start);
+        if(start)
+        {
+            String str1 =intent.getStringExtra("str");
+            webView.loadUrl(str1);
+            start = false;
+            SharedPreferences.Editor start_save = getSharedPreferences("start", MODE_PRIVATE).edit();
+            start_save.putBoolean("start", start);
+            start_save.apply();
+            Log.d("SearchActivity", "start555=" + start);
+        }
+
 
 
 
@@ -398,6 +414,27 @@ public class SearchActivity extends AppCompatActivity {
             }
         });
         dialog.show();
+    }
+
+
+
+    @Override
+    protected void onDestroy()
+    {
+        super.onDestroy();
+        SharedPreferences check_get = getSharedPreferences("isCheck", MODE_PRIVATE);
+        Boolean isCheck = check_get.getBoolean("isCheck", false);
+        Log.d("SettingsActivity", "isCheck0=" + isCheck);
+        Log.d("SettingsActivity", "start8=" + start);
+        if(!isCheck)
+        {
+            start = true;
+            Log.d("SettingsActivity", "start9=" + start);
+            SharedPreferences.Editor start_save = getSharedPreferences("start", MODE_PRIVATE).edit();
+            start_save.putBoolean("start", start);
+            start_save.apply();
+        }
+
     }
 
 }

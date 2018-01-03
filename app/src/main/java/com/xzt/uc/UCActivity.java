@@ -186,6 +186,17 @@ public class UCActivity extends AppCompatActivity {
 
 
         //启动上次未关闭的网页
+        SharedPreferences start_get = getSharedPreferences("start", MODE_PRIVATE);
+        start = start_get.getBoolean("start", false);
+        Log.d("SettingsActivity", "start100=" + start);
+        if(start)
+        {
+            String str1= DataSupport.findLast(HistoryDatabase.class).getUrl();
+            Intent intent=new Intent(UCActivity.this, SearchActivity.class);
+            intent.putExtra("str",str1);
+            startActivity(intent);
+
+        }
 
 
     }
