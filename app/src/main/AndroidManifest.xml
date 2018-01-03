@@ -59,6 +59,12 @@
         <activity android:name=".ThirdActivity" android:label="用户协议"/>
         <activity android:name=".SpeedActivity" android:label="极速/省流"/>
         <activity android:name=".UserProtocolActivity" android:label="用户协议"/>
+        <service
+            android:name=".DownloadService"
+            android:enabled="true"
+            android:exported="true" />
+
+        <activity android:name=".Download"></activity>
 
 
         <activity

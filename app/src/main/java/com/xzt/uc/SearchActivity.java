@@ -40,7 +40,7 @@ import static com.xzt.uc.SettingsActivity.start;
 public class SearchActivity extends AppCompatActivity {
 
     public static SearchActivity searchActivity = null;
-
+    private Intent downloadIntent = null;
     AutoCompleteTextView url;
     public static WebView webView;
     public int i=0;
@@ -294,7 +294,29 @@ public class SearchActivity extends AppCompatActivity {
             }
         });
 
+
+        webView.setDownloadListener(new MyWebViewDownLoadListener());
+        downloadIntent = new Intent(this, Download.class);
+
     }
+
+    private class MyWebViewDownLoadListener implements android.webkit.DownloadListener {
+
+        @Override
+        public void onDownloadStart(String url, String userAgent, String contentDisposition, String mimetype,
+                                    long contentLength) {
+            Log.i("tag", "url="+url);
+            Log.i("tag", "userAgent="+userAgent);
+            Log.i("tag", "contentDisposition="+contentDisposition);
+            Log.i("tag", "mimetype="+mimetype);
+            Log.i("tag", "contentLength="+contentLength);
+            downloadIntent.putExtra("url", url);
+            startActivity(downloadIntent);
+        }
+    }
+
+
+
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event)
     {
@@ -302,13 +324,13 @@ public class SearchActivity extends AppCompatActivity {
         if ((keyCode == KeyEvent.KEYCODE_BACK) )
         {
             // 返回键退回
-            webView.goBack();
-            if(count<0)
+            if(!webView.canGoBack())
             {
                 Intent intent=new Intent(SearchActivity.this,UCActivity.class);
                 searchActivity.startActivity(intent);
                 finish();
             }
+            webView.goBack();
             return true;
         }
         // If it wasn't the Back key or there's no web page history, bubble up
