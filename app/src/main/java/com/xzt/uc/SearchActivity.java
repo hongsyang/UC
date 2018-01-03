@@ -191,14 +191,6 @@ public class SearchActivity extends AppCompatActivity {
 
 
         //启动上次未关闭的网页
-        SharedPreferences start_get = getSharedPreferences("start", MODE_PRIVATE);
-        start = start_get.getBoolean("start", false);
-        Log.d("UCActivity", "start4=" + start);
-        if(start)
-        {
-            String str1 =intent.getStringExtra("str");
-            webView.loadUrl(str1);
-        }
 
 
 

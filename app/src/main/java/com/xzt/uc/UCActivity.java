@@ -3,9 +3,6 @@ package com.xzt.uc;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.ActivityInfo;
-import android.graphics.Bitmap;
-import android.os.Environment;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -17,12 +14,9 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageButton;
 import android.support.v7.widget.RecyclerView;
-import android.widget.Toast;
 
 import org.litepal.crud.DataSupport;
 
-import java.io.File;
-import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,8 +25,7 @@ import static com.xzt.uc.SettingsActivity.start;
 
 
 public class UCActivity extends AppCompatActivity {
-    static SharedPreferences pref1;
-    static SharedPreferences.Editor editor1;
+
     public static UCActivity ucActivity = null;
     //需要将其实例化，在别的里面要引用
     private List<News> newsList = new ArrayList<>();
@@ -52,10 +45,6 @@ public class UCActivity extends AppCompatActivity {
         }
 
         setContentView(R.layout.uc_layout);
-        editor1=getSharedPreferences("data",MODE_PRIVATE).edit();
-        pref1=getSharedPreferences("data",MODE_MULTI_PROCESS);
-
-
         ucActivity = this;
         //将其赋值为当前的活动
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -180,7 +169,6 @@ public class UCActivity extends AppCompatActivity {
         btn_youku.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 String youku1 = new String("http://www.youku.com/?tpa=dW5pb25faWQ9MTAzMjU1XzEwMDAwMl8wMV8wMg");
                 Intent intent=new Intent(UCActivity.this, SearchActivity.class);
                 intent.putExtra("youku",youku1);
@@ -198,19 +186,9 @@ public class UCActivity extends AppCompatActivity {
 
 
         //启动上次未关闭的网页
-        /*SharedPreferences start_get = getSharedPreferences("start", MODE_PRIVATE);
-        start = start_get.getBoolean("start", false);
-        Log.d("UCActivity", "start4=" + start);
-        if(start)
-        {
-            String str1= DataSupport.findLast(HistoryDatabase.class).getUrl();
-            Intent intent=new Intent(UCActivity.this, SearchActivity.class);
-            intent.putExtra("str",str1);
-            startActivity(intent);
-        }*/
+
 
     }
-
 
 
     private void initNews()

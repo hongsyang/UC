@@ -27,8 +27,6 @@ import java.io.File;
 import java.io.FileOutputStream;
 import android.os.Environment;
 import android.graphics.Bitmap;
-import android.widget.Toast;
-
 import static com.xzt.uc.SearchActivity.searchActivity;
 import static com.xzt.uc.SearchActivity.webView;
 import static com.xzt.uc.UCActivity.ucActivity;
@@ -243,7 +241,6 @@ public class MenuActivity extends Activity {
                 String sdCardPath = Environment.getExternalStorageDirectory().getPath();
                 // 图片文件路径
                 String filePath = sdCardPath + File.separator + "screenshot.png";
-                Toast.makeText(MenuActivity.this,filePath,Toast.LENGTH_SHORT).show();
 
                 File file = new File(filePath);
                 FileOutputStream os = new FileOutputStream(file);
