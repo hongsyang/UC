@@ -85,6 +85,8 @@ public class BottomBar extends LinearLayout
                     context.startActivity(new Intent(context,WebsiteNavigationActivity.class));
                 else if((Activity)context == websitenavigationActivity)
                     context.startActivity(new Intent(context,UCActivity.class));
+                else if((Activity)context == searchActivity)
+                    context.startActivity(new Intent(context,UCActivity.class));
 
             }
         });
