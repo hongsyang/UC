@@ -50,6 +50,7 @@
         <activity android:name=".LoginActivity"/>
         <activity android:name=".SignIn"/>
         <activity android:name=".SignUp"/>
+        <activity android:name=".UserSettings"/>
         <activity android:name=".AboutUCActivity" android:label="关于UC"/>
         <activity android:name=".AdActivity" android:label="广告过滤"/>
         <activity android:name=".FirstActivity" android:label="用户协议"/>

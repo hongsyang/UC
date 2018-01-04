@@ -2,8 +2,8 @@ package com.xzt.uc;
 
 import android.content.Intent;
 import android.graphics.Color;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -121,6 +121,7 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener{
                         if (user.getPassword().equals(pwd)) {
                             Intent intent = new Intent();
                             intent.putExtra("status", LoginActivity.SUCCESSFUL);
+                            intent.putExtra("user", user);
                             setResult(RESULT_OK, intent);
                             finish();
                             /*
@@ -135,7 +136,7 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener{
                     }
                 }
                 Toast.makeText(this, "用户不存在", Toast.LENGTH_SHORT).show();
-            break;
+                break;
             case R.id.back:
                 finish();
             default:

@@ -2,11 +2,13 @@ package com.xzt.uc;
 
 import org.litepal.crud.DataSupport;
 
+import java.io.Serializable;
+
 /**
  * Created by asus on 2017/12/30.
  */
 
-public class User extends DataSupport {
+public class User extends DataSupport implements Serializable {
 
     private String uid;
 
@@ -16,7 +18,7 @@ public class User extends DataSupport {
 
     private int gender;
 
-    private int number;
+    private String number;
 
     private int imageId;
 
@@ -56,11 +58,11 @@ public class User extends DataSupport {
         this.gender = gender;
     }
 
-    public int getNumber() {
+    public String getNumber() {
         return number;
     }
 
-    public void setNumber(int number) {
+    public void setNumber(String number) {
         this.number = number;
     }
 
