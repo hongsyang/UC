@@ -211,7 +211,7 @@ public class MenuActivity extends Activity {
 
                     break;
                 case R.id.btn_exit:
-
+                    //ActivityCollector.finishAll();
                     break;
             }
             finish();

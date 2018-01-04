@@ -40,6 +40,9 @@ public class SettingsActivity extends AppCompatActivity {
     private SeekBar lightSeek;
     private boolean flag = false;
     private int defalutValue = 75;
+    static SharedPreferences pref1;
+    static SharedPreferences.Editor editor1;
+    private TextView item5Text2;
 
     public static SettingsActivity settingsActivity = null;
     private TitleLayout titleLayoutMain;
@@ -70,6 +73,21 @@ public class SettingsActivity extends AppCompatActivity {
         if(actionBar!=null){
             actionBar.hide();
         }
+        editor1=getSharedPreferences("data",MODE_PRIVATE).edit();
+        pref1=getSharedPreferences("data",MODE_MULTI_PROCESS);
+        item5Text2=(TextView) findViewById(R.id.item5text2);
+        final String itemT=pref1.getString("Itemtext",rotateScreenList[0]);
+        item5Text2.setText(itemT);
+        if (item5Text2.getText()=="跟随系统"){
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
+        }
+        if(item5Text2.getText()=="锁定横屏"){
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        }
+        if(item5Text2.getText()=="锁定竖屏"){
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        }
+
         titleLayoutMain=(TitleLayout) findViewById(R.id.title_layout_main);
         titleLayoutMain.setTitle("更多设置");
         TextView skinSet=(TextView)findViewById(R.id.item4);
@@ -85,7 +103,7 @@ public class SettingsActivity extends AppCompatActivity {
                 DataSupport.deleteAll(HistoryDatabase.class);
             }
         });
-        final TextView  item5Text2=(TextView) findViewById(R.id.item5text2);
+
         skinSet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -164,14 +182,23 @@ public class SettingsActivity extends AppCompatActivity {
                 new AlertDialog.Builder(SettingsActivity.this).setItems(rotateScreenList, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        item5Text2.setText(rotateScreenList[which]);
+
                         if (which==0){
+                            item5Text2.setText(rotateScreenList[which]);
+                            editor1.putString("Itemtext",rotateScreenList[which]);
+                            editor1.apply();
                             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
                         }
                         if(which==1){
+                            editor1.putString("Itemtext",rotateScreenList[which]);
+                            editor1.apply();
+                            item5Text2.setText(rotateScreenList[which]);
                             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
                         }
                         if(which==2){
+                            editor1.putString("Itemtext",rotateScreenList[which]);
+                            editor1.apply();
+                            item5Text2.setText(rotateScreenList[which]);
                             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
                         }
                         dialog.dismiss();
