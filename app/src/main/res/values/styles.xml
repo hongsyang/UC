@@ -28,4 +28,15 @@
         <item name="android:backgroundDimEnabled">true</item>
         ;!-- 模糊 -->
     </style>
+
+    <style parent="AppTheme" name="SplashTheme">
+
+        <item name="android:windowBackground">@drawable/splash</item>
+
+        <item name="android:windowFullscreen">true</item>
+
+        <item name="windowNoTitle">true</item> <!--屏蔽标题栏的-->
+
+    </style>
+
 </resources>
