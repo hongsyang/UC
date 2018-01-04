@@ -29,11 +29,11 @@
         <!-- android:theme="@style/AppTheme"改为android:theme="@style/Theme.AppCompat.NoActionBar" -->
         <!-- 使顶部标题栏不可见 -->
         <activity android:name=".UCActivity">
-            <!--<intent-filter>
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>-->
+            </intent-filter>
         </activity>
         <activity
             android:name=".MenuActivity"
@@ -90,16 +90,6 @@
         <!-- 填写您从Mob开发者后台中得到的Appkey和AppSecret -->
         <meta-data android:name="Mob-AppKey" android:value="236a79610ae52"/>
         <meta-data android:name="Mob-AppSecret" android:value="2acb8d8fdfc96b5f0265c0916ce296dc"/>
-
-        <activity
-            android:name=".SplashActivity"
-            android:theme="@style/SplashTheme">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
 
 
     </application>
