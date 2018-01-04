@@ -10,6 +10,8 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 /**
  * Created by asus on 2018/1/3.
  */
@@ -26,6 +28,8 @@ public class UserHeader extends Fragment implements View.OnClickListener {
 
     Intent intent = null;
 
+    private CircleImageView circleImageView;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater,
@@ -39,7 +43,9 @@ public class UserHeader extends Fragment implements View.OnClickListener {
         super.onActivityCreated(savedInstanceState);
         settings = view.findViewById(R.id.settings);
         welcome = view.findViewById(R.id.welcome);
+        circleImageView = view.findViewById(R.id.icon_image);
         welcome.setText("欢迎您," + LoginActivity.user.getUid());
+        circleImageView.setImageResource(R.drawable.login_image);
         settings.setOnClickListener(this);
         back = view.findViewById(R.id.back);
         back.setOnClickListener(this);

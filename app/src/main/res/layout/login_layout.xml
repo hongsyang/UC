@@ -13,8 +13,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:layout_marginTop="40dp">
 
         <Button
@@ -24,7 +24,6 @@
             android:drawableTop="@drawable/favorite"
             android:background="#fff"
             android:paddingTop="10dp"
-            android:layout_marginRight="10dp"
             android:text="收藏"/>
 
         <Button
@@ -34,7 +33,6 @@
             android:drawableTop="@drawable/history"
             android:background="#fff"
             android:paddingTop="10dp"
-            android:layout_marginRight="10dp"
             android:text="历史"/>
 
         <Button
@@ -44,7 +42,6 @@
             android:drawableTop="@drawable/download"
             android:background="#fff"
             android:paddingTop="10dp"
-            android:layout_marginRight="10dp"
             android:text="下载"/>
 
         <Button

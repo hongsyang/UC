@@ -199,6 +199,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
                     Log.d(TAG, user.getUid());
                     Log.d(TAG, user.getPassword());
                     Toast.makeText(this, "注册成功", Toast.LENGTH_SHORT).show();
+                    finish();
                     /*
                     进入登录界面
                     */
